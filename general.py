@@ -1,5 +1,4 @@
 import os, copy, subprocess
-from scipy.optimize import linear_sum_assignment
 import numpy as np
 import pandas as pd
 import torch
@@ -10,11 +9,7 @@ try:
 except:
     print("Warning for detection: Please install yolov5.")
     
-def matching_iou_hungarian(iou_matrix, iou_threshold=0):
-    iou_matrix = np.where(iou_matrix < iou_threshold, 0, iou_matrix)
-    cost_matrix = 1 - iou_matrix
-    row_ind, col_ind = linear_sum_assignment(cost_matrix)
-    return row_ind, col_ind
+
 
 def one_hot_encode(label, num_classes, device='cpu'):
     return (
@@ -103,8 +98,9 @@ def nms_resize_organize_etc(pred, iou_nms_thresh, img_size):
     return pred
 
 
-"""
-results into pandas.
+"""results into pandas.
+
+
 """
 def convert_format(matched_gts, matched_point_pred, matched_set_pred, impath=None):
     result = {
@@ -164,8 +160,10 @@ class YOLO2SKLEARN:
         pass
 
 
-"""
-This section just for plottings.
+"""This section just preparing for plots.
+
+
+
 """
 def adjust_bbox_for_flipud(bbox, img_height):
     bbox_ = copy.deepcopy(bbox)
@@ -203,6 +201,16 @@ def label_bbox(rectangles, labels, color, classes_mapping=None):
         # labelled_rects *= hv.DynamicMap(lambda: hv.Labels([text_label]))
     return labelled_rects
 
+
+
+
+
+"""This section for preparing/downloading data.
+
+
+
+
+"""
 def download_dataset(dataset_name, file_id, destination_dir='dataset'):
     """
     Downloads a dataset file from Google Drive.
