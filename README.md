@@ -8,13 +8,13 @@
 
 <p align="left">
   <img src="https://github.com/PongsiriH/Traffic-Signs-detection-with-some-conformal-prediction/assets/127966686/534679d7-8347-4371-9660-d721c1e5c002" width="48%" alt="Confusion matrix with some mix-ups between speed limit signs and traffic signs vs. background" />
-  <br>Looks like our model's mixing up speed limits a lot. Also, it's getting tricked by some backgrounds, thinking they're traffic signs. Mostly, it's signs we missed or didn't include when we were labeling.
+  <br>It turns out our model is a bit confused with speed limits and occasionally mistakes some background features for traffic signs. This mostly happens with traffic signs that were either missed or not included during our labeling process.
 </p>
 
-### Take away
-- **Speed Limit Signs**: We need to throw more speed limit sign pics at it, especially ones that look different – maybe from weird angles or in funky lighting. That might help it tell them apart better.
-- **Background Confusion**: We should double-check our labels to make sure we didn't miss any signs or mark them wrong. Plus, adding pics without any signs (that kinda look like they might have one) could teach it to not get fooled by backgrounds.
-- **Tuning Model**: Trying out some new tweaks or maybe a different model setup could also make a difference. Anything that helps it get better at spotting the small stuff that tells one sign from another.
+### Takeaways
+**Speed Limit Signs**: It's clear we need to enrich our dataset with a wider variety of speed limit signs. Incorporating images captured from unique angles and under varied lighting conditions could significantly improve the model's ability to distinguish between them.
+**Background Confusion**: A thorough review of our dataset is necessary to ensure no signs were overlooked or mislabeled. Additionally, integrating images that mimic potential traffic signs but are actually part of the background might enhance the model's discernment capabilities, reducing false positives.
+**Model Tuning**: Experimenting with adjustments to the model's architecture or tuning its parameters could yield better results. Focusing on enhancements that improve the model's sensitivity to subtle differences among traffic signs may lead to more accurate predictions.
 
 # Conformal prediction on classification aspect of yolov5m.
 link to colab: https://colab.research.google.com/drive/1HSqgNwxLLsNKpAoIMJp1FfHbN-WIW-wU#scrollTo=0xUaMXqXPwlT
