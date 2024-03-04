@@ -9,8 +9,6 @@ try:
 except:
     print("Warning for detection: Please install yolov5.")
     
-
-
 def one_hot_encode(label, num_classes, device='cpu'):
     return (
         torch.nn.functional.one_hot(torch.asarray(label, dtype=torch.int64), num_classes=num_classes)
